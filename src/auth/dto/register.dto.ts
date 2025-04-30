@@ -16,4 +16,8 @@ export class RegisterDTO {
   @IsNotEmpty()
   @ApiProperty()
   password: string;
+
+  @IsString()
+  @ApiProperty({ required: false, enum: ['mahasiswa', 'dosen', 'admin'], default: 'mahasiswa' })
+  role?: string; // mahasiswa | dosen | admin
 }

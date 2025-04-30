@@ -26,6 +26,9 @@ export class User {
   @Column()
   bio: string;
 
+  @Column({ default: 'mahasiswa' })
+  role: string; // mahasiswa | dosen | admin
+
   @CreateDateColumn()
   created_at: Date;
 

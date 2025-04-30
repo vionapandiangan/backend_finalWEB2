@@ -27,9 +27,10 @@ export class AuthService {
     ) {
       throw new UnauthorizedException();
     }
-    const payload: JwtPayloadDto = { sub: user.id, email: user.email };
+    const payload: JwtPayloadDto = { sub: user.id, email: user.email, role: user.role };
     return {
       access_token: await this.jwtService.signAsync(payload),
+      role: user.role,
     };
   }
 
@@ -49,6 +50,7 @@ export class AuthService {
     user.email = registerDto.email;
     user.username = registerDto.username;
     user.password_hash = bcrypt.hashSync(registerDto.password, 10);
+    user.role = registerDto.role || 'mahasiswa';
     await this.userService.save(user);
   }
 }

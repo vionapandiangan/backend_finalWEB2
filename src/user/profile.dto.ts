@@ -2,6 +2,9 @@ import { ApiProperty } from "@nestjs/swagger";
 
 export class ProfileDTO {
   @ApiProperty()
+  id: number;
+
+  @ApiProperty()
   username: string;
 
   @ApiProperty()
@@ -15,4 +18,7 @@ export class ProfileDTO {
 
   @ApiProperty()
   updated_at: Date;
+
+  @ApiProperty()
+  role: string;
 }

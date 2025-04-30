@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
+import { RoleGuard } from './auth/role.guard';
 import { JwtService } from '@nestjs/jwt';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
@@ -8,7 +9,8 @@ import { AppService } from './app.service';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { PostModule } from './post/post.module';
+import { AttendanceModule } from './attendance/attendance.module';
+import { CourseModule } from './course/course.module';
 
 @Module({
   imports: [
@@ -33,13 +35,15 @@ import { PostModule } from './post/post.module';
     }),
     AuthModule,
     UserModule,
-    PostModule
+    AttendanceModule,
+    CourseModule
   ],
   controllers: [AppController],
   providers: [
     ConfigService,
     JwtService,
     { provide: APP_GUARD, useClass: AuthGuard },
+    { provide: APP_GUARD, useClass: RoleGuard },
     AppService,
   ],
 })

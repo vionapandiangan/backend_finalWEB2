@@ -15,6 +15,10 @@ export class UserService {
     return user;
   }
 
+  async findById(id: number): Promise<User | null> {
+    return this.userRepository.findOne({ where: { id } });
+  }
+
   async findByEmailOrUsername(
     email: string,
     username: string,
@@ -27,5 +31,13 @@ export class UserService {
 
   async save(user: User): Promise<User> {
     return this.userRepository.save(user);
+  }
+
+  async findAll(): Promise<User[]> {
+    return this.userRepository.find();
+  }
+
+  async findByRole(role: string): Promise<User[]> {
+    return this.userRepository.find({ where: { role } });
   }
 }

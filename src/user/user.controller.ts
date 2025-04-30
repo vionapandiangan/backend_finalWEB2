@@ -25,11 +25,13 @@ export class UserController {
       throw new NotFoundException();
     }
     return {
+      id: user.id, // <-- Tambahkan id
       username: user.username,
       email: user.email,
       bio: user.bio,
       created_at: user.created_at,
       updated_at: user.updated_at,
+      role: user.role,
     };
   }
 }
