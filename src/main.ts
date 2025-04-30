@@ -6,7 +6,11 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.setGlobalPrefix('api');
-  app.enableCors();
+  app.enableCors({
+    origin: [
+      'https://frontend-final-web-2-indol.vercel.app',
+    ]
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Simple Social Media API')
