@@ -8,7 +8,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.enableCors({
     origin: [
-      'https://frontend-final-web-2-indol.vercel.app',
+      'https://frontend-final-web-2-five.vercel.app',
     ]
   });
 
